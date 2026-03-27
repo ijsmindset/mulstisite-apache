@@ -1,0 +1,4 @@
+Documentar el proceso de configuración necesario para implementar dos sitios webs
+diferentes en el mismo servidor. Se llamarán daw1.apache.local y daw2.apache.local
+Configura el archivo “hosts” de tu ordenador para poder acceder a las webs utilizando
+el FQDN que configurarás en los virtual Hosts de Apache.

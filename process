@@ -1,0 +1,40 @@
+Creamos las carpetas daw1 y daw2 y creamos un archivo index para identificarlas
+posteriormente
+
+$mkdir /var/www/daw1
+$mkdir /var/www/daw2
+$nano /var/www/daw1/index.html
+$nano /var/www/daw2/index.html
+
+- El contenido del fichero <index.html> ponemos lo que queramos por ejemplo:
+prueba sitio 1 en una carpeta y en la otra prueba sitio2.
+
+- Dar permisos de propiedad de usuario Apache a las dos carpetas
+$chrown -R www-dat:www-data /var/www/daw1
+$chrown -R www-dat:www-data /var/www/daw2
+
+- Copiar uno de los sitios de apache para facilitar la configuración:
+$cp /etc/apache/sites-available/000-default.conf /etc/apache2/sites-available/daw1.conf
+$cp /etc/apache/sites-available/000-default.conf /etc/apache2/sites-available/daw2.conf
+
+- Editamos los archivos xml para configurar el sitio
+$nano /etc/apache2/sites-available/daw1.conf
+$nano /etc/apache2/sites-available/daw2.conf
+
+- Configurar el serverName y DocumentRoot en cada .conf
+Servername daw1. apache.local
+DocumentRoot /var/www/daw1
+en el otro sitio web:
+Servername daw2. apache.local
+DocumentRoot /var/www/daw2
+
+- Activar los sitios en apache
+$a2ensite daw1.conf
+$a2ensite daw2.conf
+
+- Reiniciamos apache
+$apache2 restart
+
+- Editar el fichero host y poner la ip:
+192.168.1.144 daw1.apache.local
+192.168.1.144 daw2.apache.local
